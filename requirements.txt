@@ -1,4 +1,6 @@
 Django==4.2.11
 gunicorn
 whitenoise
-dj -database-url
+dj-database-url
+psycopg2-binary
+python-decouple
