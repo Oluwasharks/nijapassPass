@@ -1,0 +1,56 @@
+
+{% extends 'layout.html' %}
+{% block content %}
+<header class="hero">
+  <div class="container">
+    <h1 class="display-4 fw-bold">Your First Time in Nigeria?<br>Travel Like a Local.</h1>
+    <p class="lead mt-3">One App. One Wallet. Book Hotels, Cars, Restaurants & Private Jets. No Scam, No Stress.</p>
+    <div class="mt-4">
+      <a href="#book" class="btn btn-light btn-lg fw-bold me-2">Book Now</a>
+      <a href="/about/" class="btn btn-outline-light btn-lg">How it Works</a>
+    </div>
+  </div>
+</header>
+
+<div class="container my-4" id="walletSection">
+  <div class="wallet-card shadow">
+    <div class="d-flex justify-content-between align-items-center">
+      <div><small style="letter-spacing:2px">NIJAPASS WALLET</small><h2 class="mt-1">₦<span id="walletBal2">0</span></h2><small>✓ Pay for everything in Naira • No foreign card needed</small></div>
+      <div class="text-end"><button class="btn btn-light fw-bold" onclick="fundWallet()">+ Fund Wallet</button><br><button class="btn btn-sm btn-outline-light mt-2" onclick="resetWallet()">Reset</button></div>
+    </div>
+  </div>
+</div>
+
+<div class="container py-5">
+  <h3 class="section-title">🌍 Must-See Nigeria</h3>
+  <div class="row">
+    {% for t in tourism %}
+    <div class="col-md-3 mb-4"><div class="card place-card"><img src="{{ t.img }}"><div class="card-body"><h6>{{ t.name }}</h6><small class="text-muted">{{ t.desc }}</small></div></div></div>
+    {% endfor %}
+  </div>
+
+  <div id="book"></div>
+  <h3 class="section-title mt-5">🏨 Book Hotels - Real Prices</h3>
+  <div class="row">
+    {% for h in hotels %}
+    <div class="col-md-4 mb-4"><div class="card service-card"><img src="{{ h.img }}"><div class="card-body"><span class="badge bg-success mb-2">{{ h.rating }}</span><h6>{{ h.name }}</h6><small>{{ h.city }}</small><p class="price">₦{{ h.price }}/night</p><button class="btn btn-green w-100" onclick="bookItem('{{ h.name }}', {{ h.price }}, 'hotel')">Book Hotel - Pay with Wallet</button></div></div></div>
+    {% endfor %}
+  </div>
+
+  <h3 class="section-title">🚙 Car Hire - With Trusted Drivers</h3>
+  <div class="row">
+    {% for c in cars %}
+    <div class="col-md-4 mb-4"><div class="card service-card"><img src="{{ c.img }}"><div class="card-body"><h6>{{ c.name }}</h6><small class="text-muted">{{ c.type }}</small><p class="price">₦{{ c.price }}/day</p><button class="btn btn-green w-100" onclick="bookItem('{{ c.name }}', {{ c.price }}, 'car')">Hire Car</button></div></div></div>
+    {% endfor %}
+  </div>
+
+  <h3 class="section-title">🍽️ Restaurants - Reserve a Table</h3>
+  <div class="row">
+    {% for r in restaurants %}
+    <div class="col-md-4 mb-4"><div class="card service-card"><img src="{{ r.img }}"><div class="card-body"><h6>{{ r.name }}</h6><small>{{ r.city }}</small><p class="price">From ₦{{ r.price }}</p><button class="btn btn-green w-100" onclick="bookItem('{{ r.name }}', {{ r.price }}, 'restaurant')">Reserve Table</button></div></div></div>
+    {% endfor %}
+  </div>
+
+  <div class="text-center my-5 p-5 bg-white rounded shadow"><h3>✈️ Need Private Jet?</h3><p>From Lagos to anywhere in Nigeria in 1 hour</p><a href="/fly/" class="btn btn-green btn-lg">See Jets - From ₦4.2M/hour →</a></div>
+</div>
+{% endblock %}

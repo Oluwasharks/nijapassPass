@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="container py-5 text-center">
+  <div class="card mx-auto shadow" style="max-width:600px; border-radius:20px;">
+    <div class="card-body p-5">
+      <h1 style="font-size:4rem;">✅</h1>
+      <h2 class="fw-bold" style="color:#008751">Booking Confirmed!</h2>
+      <p class="lead mt-3">Your {{ type }} booking (ID: {{ id }}) was successful.</p>
+      <div class="alert alert-success mt-4">
+        <p class="mb-1">💳 Paid via NijaPass Wallet</p>
+        <small>Receipt sent to your email • Agent will call you in 5 minutes</small>
+      </div>
+      <div class="mt-4">
+        <a href="/" class="btn btn-green btn-lg me-2">Book Another</a>
+        <a href="/fly/" class="btn btn-outline-dark">See Flights</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

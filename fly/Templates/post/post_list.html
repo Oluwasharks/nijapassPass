@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="container py-5">
+<h2 class="section-title">✈️ Book Flights & Private Jets</h2>
+<div class="row">
+{% for post in posts %}
+<div class="col-md-4 mb-4"><div class="card service-card"><img src="{{ post.image_url }}"><div class="card-body"><h6>{{ post.title }}</h6><small>{{ post.location }}</small><p>{{ post.content }}</p><p class="price">₦{{ post.price }}</p><button class="btn btn-green w-100" onclick="bookItem('{{ post.title }}', {{ post.price }}, 'jet')">Book Jet - Pay via Wallet</button></div></div></div>
+{% endfor %}
+</div>
+</div>
+{% endblock %}
